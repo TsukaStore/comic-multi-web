@@ -30,25 +30,15 @@ Or use Docker (recommended).
 
 ## Docker
 
+Uses the published image from GHCR:
+
 ```bash
-docker compose up --build
+docker compose up -d
 ```
 
 Open http://localhost:8080  
 
-Data persists in the `comic-data` volume.
-
-### Image from GitHub Container Registry
-
-Each release tag is published to GHCR. Prefer the **latest** image or the newest tag on the [Releases](../../releases) page:
-
-```bash
-# always the most recent release build
-docker pull ghcr.io/tsukastore/comic-multi-web:latest
-
-# or pin to a specific release (see Releases for the current tag)
-# docker pull ghcr.io/tsukastore/comic-multi-web:vX.Y.Z
-```
+Data persists in the `comic-data` volume. Pin a version by setting `image` in `docker-compose.yml` (e.g. `ghcr.io/tsukastore/comic-multi-web:v0.1.0`).
 
 ## Configuration
 

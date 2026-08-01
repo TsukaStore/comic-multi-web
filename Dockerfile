@@ -15,6 +15,8 @@ COPY apps/server/package.json apps/server/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
+# pnpm prune refuses to purge node_modules without a TTY unless CI is set
+ENV CI=true
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 COPY --from=deps /app/apps/server/node_modules ./apps/server/node_modules
