@@ -70,19 +70,6 @@ Most day-to-day options (enabled sources, reader mode, proxy, log level, WebDAV)
 
 Use the **Accounts** page in the app to log into each source (cookie or username/password, depending on the site).
 
-## CI
-
-- **CI** — on push/PR to `main`: typecheck, tests, build, Docker build (no push)
-- **Release** — on tag `v*`: checks, build, push image to GHCR (`:latest` + that tag), create GitHub Release
-
-Publish a new version:
-
-```bash
-# use the next semver tag (see existing tags / Releases)
-git tag vX.Y.Z
-git push origin vX.Y.Z
-```
-
 ## Disclaimer
 
 For personal self-hosting and learning only. Comply with local law and each source’s terms of service.
