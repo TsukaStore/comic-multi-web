@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vite-plugin-pwa/client", "node"],
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    // TS 6+: no baseUrl — put the former baseUrl prefix into paths (aka.ms/ts6)
+    "paths": {
+      "@/*": ["./src/*"],
+      "server/rpc": ["./../server/src/rpc.ts"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
+}

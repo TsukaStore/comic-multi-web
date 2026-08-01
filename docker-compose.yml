@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    image: comic-multi-web:local
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      DATA_DIR: /data
+      WEB_DIST: /app/apps/web/dist
+      APP_PASSWORD: ${APP_PASSWORD:-}
+      HTTP_PROXY: ${HTTP_PROXY:-}
+      HTTPS_PROXY: ${HTTPS_PROXY:-}
+      ENABLED_SOURCES: ${ENABLED_SOURCES:-nhentai,picacg,ehentai,jm}
+    volumes:
+      - comic-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:8080/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  comic-data:

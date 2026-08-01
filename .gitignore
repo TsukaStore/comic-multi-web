@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+data/*
+!data/.gitkeep
+*.log
+.vite
+.turbo
+coverage
+.vp
+*.db
+*.db-*

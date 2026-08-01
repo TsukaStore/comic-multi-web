@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./rpc": {
+      "types": "./src/rpc.ts",
+      "import": "./src/rpc.ts",
+      "default": "./src/rpc.ts"
+    }
+  },
+  "scripts": {
+    "dev": "DATA_DIR=../../data tsx watch src/index.ts",
+    "build": "tsdown",
+    "start": "WEB_DIST=../web/dist DATA_DIR=../../data node dist/index.mjs",
+    "check": "tsc --noEmit",
+    "test": "DATA_DIR=../../data node --import tsx --test src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "catalog:",
+    "@hono/zod-validator": "catalog:",
+    "cheerio": "catalog:",
+    "hono": "catalog:",
+    "ky": "catalog:",
+    "sharp": "^0.35.3",
+    "undici": "^8.9.0",
+    "webdav": "^5.10.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsdown": "^0.22.14",
+    "tsx": "^4.23.1",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
