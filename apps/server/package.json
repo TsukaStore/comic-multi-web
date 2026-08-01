@@ -15,7 +15,7 @@
     "build": "tsdown",
     "start": "WEB_DIST=../web/dist DATA_DIR=../../data node dist/index.mjs",
     "check": "tsc --noEmit",
-    "test": "DATA_DIR=../../data node --import tsx --test src/**/*.test.ts"
+    "test": "node --import tsx --test --test-concurrency=1 src/**/*.test.ts"
   },
   "dependencies": {
     "@hono/node-server": "catalog:",

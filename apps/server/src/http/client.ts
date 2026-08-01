@@ -157,8 +157,6 @@ function normalizeRetry(
   return fallback;
 }
 
-ensureProxy();
-
 /** Shared ky instance — helpers go through this */
 export const http: KyInstance = ky.create({
   timeout: 30_000,
@@ -200,6 +198,8 @@ export async function httpFetch(
   url: string,
   options: FetchOptions = {},
 ): Promise<Response> {
+  // Lazy: do not open SQLite at import time (breaks parallel tests / pure imports)
+  ensureProxy();
   await throttleHost(url);
   return http(url, toKyOptions(options));
 }
