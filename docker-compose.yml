@@ -1,7 +1,7 @@
 services:
-  comic-multi-web:
+  comic-multi:
     image: ghcr.io/tsukastore/comic-multi-web:latest
-    container_name: comic-multi-web
+    container_name: comic-multi
     ports:
       - "8080:8080"
     environment:
